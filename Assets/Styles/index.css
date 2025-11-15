@@ -47,12 +47,14 @@ body {
 .menu-icon .bar {
   width: 100%;
   height: 4px;
-  background-color: #333;
   margin: 6px 0;
   -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, -webkit-transform 0.3s;
   transition: transform 0.3s, opacity 0.3s;
   transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+}
+.menu-icon.open .bar {
+  background-color: #333 !important;
 }
 .menu-icon.open .bar:nth-child(1) {
   -webkit-transform: translateY(10px) rotate(45deg);
@@ -86,6 +88,7 @@ body {
           box-sizing: border-box;
   overflow-y: auto;
   z-index: 999;
+  color: #333;
 }
 #sidebar.open {
   -webkit-transform: translateX(0);
