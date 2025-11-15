@@ -1,0 +1,111 @@
+$transition-speed: 0.3s;
+$bar-color: #333;
+$sidebar-width: 300px;
+$text-color: #333;
+
+body {
+    background-color: #fff; 
+    transition: background-color $transition-speed ease;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    color: $text-color;
+    overflow-x: hidden;
+}
+
+#color-info {
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7), -1px -1px 2px rgba(0, 0, 0, 0.7);
+    
+    h1 {
+        font-size: 3em;
+        margin-bottom: 0.2em;
+    }
+    
+    p {
+        font-size: 1.5em;
+        margin-top: 0;
+    }
+}
+
+.menu-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1000;
+
+    .bar {
+        width: 100%;
+        height: 4px;
+        background-color: $bar-color;
+        margin: 6px 0;
+        transition: transform $transition-speed, opacity $transition-speed;
+    }
+
+    &.open {
+        .bar:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .bar:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+    }
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: $sidebar-width;
+    height: 100%;
+    background-color: #f4f4f4;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transform: translateX($sidebar-width); 
+    transition: transform $transition-speed ease-out;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 999;
+    
+    &.open {
+        transform: translateX(0);
+    }
+    
+    h2 {
+        text-align: center;
+        margin-top: 0;
+        border-bottom: 2px solid $bar-color;
+        padding-bottom: 10px;
+    }
+    
+    #color-list {
+        list-style: none;
+        padding: 0;
+        
+        li {
+            padding: 5px 0;
+            border-bottom: 1px dashed #ccc;
+            
+            span.color-preview {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                margin-right: 10px;
+                border: 1px solid #000;
+                vertical-align: middle;
+            }
+        }
+    }
+}
